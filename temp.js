@@ -679,7 +679,7 @@ let outputList = [];
 let freqCounter = 0;
 
 const doc = new pdf();
-doc.pipe(fs.createWriteStream('newOutput.pdf'));
+doc.pipe(fs.createWriteStream('MnemonicData.pdf'));
 
 // url, starting page
 printData(url, 1);
