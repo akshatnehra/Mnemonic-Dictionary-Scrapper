@@ -679,7 +679,7 @@ let outputList = [];
 let freqCounter = 0;
 
 const doc = new pdf();
-doc.pipe(fs.createWriteStream('MnemonicData.pdf'));
+doc.pipe(fs.createWriteStream('MyOutput.pdf'));
 
 // url, starting page
 printData(url, 1);
@@ -786,7 +786,35 @@ function printPDF(){
         doc
           .fillColor('red')
           .fontSize(18)
-          .text(outputList.length - i + ". " + outputList[i].word);
+          .text(outputList.length - i + ". " + outputList[i].word + "                     ",{
+            continued: true
+          });
+
+          doc
+          .fillColor('red')
+          .fontSize(15)
+          .text("Merriam        ",{
+            link: 'https://www.merriam-webster.com/dictionary/' + outputList[i].word,
+            continued: true
+          });
+          
+          doc
+          .fillColor('red')
+          .fontSize(15)
+          .text("Google        ",{
+            link: 'https://www.google.com/search?q=' + outputList[i].word + '+meaning',
+            continued: true
+          });
+
+          doc
+          .fillColor('red')
+          .fontSize(15)
+          .text("M-Dict",{
+            link: 'https://mnemonicdictionary.com/?word=' + outputList[i].word,
+          });
+
+          
+
 
         // short def
         doc
